@@ -6,12 +6,13 @@ import "./App.css";
 function App() {
   const [fullName, setFullName] = useState("");
   const [amount, setAmount] = useState("");
+  const host = process.env.REACT_APP_HOST;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/api/donations/adddonation", {
+      await axios.post(`${host}/api/donations/adddonation`, {
         fullName,
         amount,
       }, {
